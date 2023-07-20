@@ -1,0 +1,31 @@
+# Frontend image
+
+FROM node:18.17.0-slim AS frontend_image
+
+WORKDIR /frontend
+
+COPY ./frontend /frontend
+
+RUN npm install
+RUN npm run build
+
+# Application image
+
+FROM ruby:3.2.1-slim
+
+WORKDIR /app
+
+RUN apt-get update &&\
+  apt-get install --yes build-essential git libpq-dev
+
+COPY ./backend /app
+
+RUN gem install rails
+RUN bundle install
+
+COPY --from=frontend_image /frontend/dist /app/public
+
+ENV RAILS_ENV=production
+ENV RAILS_SERVE_STATIC_FILES=true
+EXPOSE 3000
+CMD bin/rails server
