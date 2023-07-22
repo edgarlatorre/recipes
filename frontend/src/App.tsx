@@ -1,7 +1,12 @@
+import { useQuery } from "@apollo/client"
 import "./App.css"
+import { GetRecipesDocument } from "./gql/graphql"
 
 function App() {
-  return <h1>Recipes</h1>
+  const { data } = useQuery(GetRecipesDocument)
+  console.log(data)
+
+  return data?.recipes.map((recipe) => <h2>{recipe.title}</h2>)
 }
 
 export default App
