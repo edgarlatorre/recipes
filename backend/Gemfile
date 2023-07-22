@@ -36,6 +36,10 @@ gem "bootsnap", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem "rack-cors"
 
+# Graphql
+gem "graphql" # Graphql library for ruby
+gem "graphiql-rails" # Graphql UI Browser
+
 # Rubocop
 gem "rubocop", require: false
 gem "rubocop-performance", require: false
