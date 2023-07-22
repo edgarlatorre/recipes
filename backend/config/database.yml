@@ -83,7 +83,5 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: recipes_production
-  username: recipes
-  password: <%= ENV["RECIPES_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  url: <%= ENV["DATABASE_URL"] %>
