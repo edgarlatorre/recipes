@@ -5,8 +5,10 @@ import App from "./App.tsx"
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client"
 
 const client = new ApolloClient({
-  cache: new InMemoryCache(),
   uri: import.meta.env.VITE_API_URL,
+  cache: new InMemoryCache({
+    addTypename: false,
+  }),
 })
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

@@ -40,10 +40,30 @@ export const Search = ({ onSubmit }: Props) => {
         {ingredients.map((ingredient) => (
           <span
             key={ingredient}
-            onClick={() => removeIngredient(ingredient)}
-            className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+            className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
           >
             {ingredient}
+            <button
+              type="button"
+              onClick={() => removeIngredient(ingredient)}
+              className="ml-2 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+            >
+              <svg
+                className="w-2 h-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                />
+              </svg>
+            </button>
           </span>
         ))}
       </div>

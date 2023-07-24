@@ -1,12 +1,13 @@
-import { useQuery } from "@apollo/client"
-import { GetRecipesDocument } from "./gql/graphql"
 import { Search } from "./components/Search"
 import { Header } from "./components/Header"
+import { useState } from "react"
+import { RecipeList } from "./components/RecipeList"
 
 function App() {
-  const { data } = useQuery(GetRecipesDocument)
+  const [ingredients, setIngredients] = useState<string[]>([])
 
   const onSubmit = (ingredients: string[]) => {
+    setIngredients(ingredients)
     console.log(ingredients)
   }
 
@@ -14,8 +15,7 @@ function App() {
     <>
       <Header />
       <Search onSubmit={onSubmit} />
-
-      <h3 className="text-2xl p-2">{data?.recipes[0].title}</h3>
+      <RecipeList ingredients={ingredients} />
     </>
   )
 }

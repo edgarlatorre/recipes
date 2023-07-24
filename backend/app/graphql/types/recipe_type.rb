@@ -10,7 +10,8 @@ module Types
     field :image, String
     field :author, String
     field :cuisine, String
-    field :category_id, Integer
+    field :category, CategoryType
+    field :ingredients, [IngredientType]
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end

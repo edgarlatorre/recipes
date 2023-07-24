@@ -1,7 +1,19 @@
-query GetRecipes {
-  recipes {
-    id
-    title
-    ratings
+query GetRecipes($ingredients: [String!]) {
+  recipes(ingredients: $ingredients) {
+    nodes {
+      id
+      title
+      ratings
+      author
+      ingredients {
+        description
+      }
+      category {
+        name
+      }
+      image
+      createdAt
+      updatedAt
+    }
   }
 }
