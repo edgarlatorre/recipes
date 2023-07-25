@@ -8,7 +8,6 @@ function App() {
 
   const onSubmit = (ingredients: string[]) => {
     setIngredients(ingredients)
-    console.log(ingredients)
   }
 
   return (
