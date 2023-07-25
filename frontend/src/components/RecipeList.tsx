@@ -11,7 +11,11 @@ export const RecipeList = ({ ingredients }: Props) => {
     variables: { ingredients: ingredients },
   })
 
-  return data?.recipes.nodes?.map(
-    (recipe) => recipe && <RecipeItem recipe={recipe} key={recipe.id} />
+  return (
+    <div className="flex flex-col justify-center px-8 w-full">
+      {data?.recipes.nodes?.map(
+        (recipe) => recipe && <RecipeItem recipe={recipe} key={recipe.id} />
+      )}
+    </div>
   )
 }
