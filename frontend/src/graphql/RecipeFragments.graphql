@@ -1,0 +1,27 @@
+fragment RecipesPage on RecipeConnection {
+  edges {
+    cursor
+    node {
+      id
+      title
+      ratings
+      author
+      ingredients {
+        id
+        description
+      }
+      category {
+        name
+      }
+      image
+      createdAt
+      updatedAt
+    }
+  }
+  pageInfo {
+    endCursor
+    hasNextPage
+    hasPreviousPage
+    startCursor
+  }
+}

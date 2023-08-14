@@ -1,5 +1,5 @@
-query GetRecipes($ingredients: [String!], $limit: Int!) {
-  recipes(ingredients: $ingredients, first: $limit) {
+query GetNextRecipes($ingredients: [String!], $limit: Int!, $cursor: String) {
+  recipes(ingredients: $ingredients, first: $limit, after: $cursor) {
     edges {
       cursor
       node {

@@ -23,7 +23,7 @@ export const RecipeItem = ({ recipe }: Props) => {
         <h3 className="text-2xl mb-4">Ingredients</h3>
         <ul>
           {recipe.ingredients?.map((ingredient) => (
-            <li key={ingredient.id} className="text-lg">
+            <li key={`ingredient-${ingredient.id}`} className="text-lg">
               {ingredient.description}
             </li>
           ))}

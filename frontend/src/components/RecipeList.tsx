@@ -1,20 +1,19 @@
-import { useQuery } from "@apollo/client/react/hooks"
-import { GetRecipesDocument } from "../gql/graphql"
+import {
+  GetRecipesQuery,
+} from "../gql/graphql"
 import { RecipeItem } from "./RecipeItem"
 
-interface Props {
-  ingredients: string[]
-}
-
-export const RecipeList = ({ ingredients }: Props) => {
-  const { data } = useQuery(GetRecipesDocument, {
-    variables: { ingredients: ingredients },
-  })
-
+export const RecipeList = ({ recipes }: GetRecipesQuery) => {
   return (
     <div className="flex flex-col justify-center px-8 w-full">
-      {data?.recipes.nodes?.map(
-        (recipe) => recipe && <RecipeItem recipe={recipe} key={recipe.id} />
+      {recipes.edges?.map(
+        (recipe) =>
+          recipe?.node && (
+            <RecipeItem
+              recipe={recipe.node}
+              key={`recipe-item-${recipe.node.id}`}
+            />
+          )
       )}
     </div>
   )
