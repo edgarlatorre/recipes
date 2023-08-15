@@ -1,10 +1,12 @@
 import { useState } from "react"
+import { RecipeOrderEnum } from "../gql/graphql"
 
 interface Props {
   onSubmit: (ingredient: string[]) => void
+  onSort: (orderBy: RecipeOrderEnum) => void
 }
 
-export const Search = ({ onSubmit }: Props) => {
+export const Search = ({ onSubmit, onSort }: Props) => {
   const [ingredients, setIngredients] = useState<string[]>([])
   const [ingredient, setIngredient] = useState("")
 
@@ -35,6 +37,14 @@ export const Search = ({ onSubmit }: Props) => {
           placeholder="Ingredients..."
           value={ingredient}
         />
+
+        <select id="sort_by" className="m-8 py-3 px-4 pr-9 block border-gray-200 rounded-md text-sm focus:border-blue-800 focus:ring-blue-800" onChange={(e) => onSort(e.target.value as RecipeOrderEnum)}>
+          <option selected value={RecipeOrderEnum.TitleAsc}>Order by</option>
+          <option value={RecipeOrderEnum.TitleAsc}>Title ↑</option>
+          <option value={RecipeOrderEnum.TitleDesc}>Title ↓</option>
+          <option value={RecipeOrderEnum.RatingsAsc}>Ratings ↑</option>
+          <option value={RecipeOrderEnum.RatingDesc}>Ratings ↓</option>
+        </select>
       </form>
       <div className="flex flex-row">
         {ingredients.map((ingredient) => (

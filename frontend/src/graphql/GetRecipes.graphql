@@ -1,5 +1,9 @@
-query GetRecipes($ingredients: [String!], $limit: Int!) {
-  recipes(ingredients: $ingredients, first: $limit) {
+query GetRecipes(
+  $ingredients: [String!]
+  $limit: Int!
+  $orderBy: RecipeOrderEnum
+) {
+  recipes(ingredients: $ingredients, first: $limit, orderBy: $orderBy) {
     edges {
       cursor
       node {
