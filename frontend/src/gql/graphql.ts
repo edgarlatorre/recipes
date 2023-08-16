@@ -108,8 +108,8 @@ export type RecipeEdge = {
 };
 
 export enum RecipeOrderEnum {
-  RatingDesc = 'rating_desc',
   RatingsAsc = 'ratings_asc',
+  RatingsDesc = 'ratings_desc',
   TitleAsc = 'title_asc',
   TitleDesc = 'title_desc'
 }

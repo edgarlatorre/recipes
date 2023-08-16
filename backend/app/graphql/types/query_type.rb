@@ -13,16 +13,11 @@ module Types
       argument :order_by, Types::RecipeOrderEnum, required: false
     end
     def recipes(ingredients:, order_by: "ratings_desc")
-      allowed_order = {
-        "title_asc" => {title: :asc},
-        "title_desc" => {title: :desc},
-        "ratings_asc" => {ratings: :asc},
-        "ratings_desc" => {ratings: :desc}
-      }
+      order_param = Types::RecipeOrderEnum.to_param(order_by)
 
-      return Recipe.order(allowed_order[order_by]).by_ingredients(ingredients) if ingredients.present?
+      return Recipe.order(order_param).by_ingredients(ingredients) if ingredients.present?
 
-      Recipe.order(allowed_order[order_by]).all
+      Recipe.order(order_param).all
     end
   end
 end

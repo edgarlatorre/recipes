@@ -4,9 +4,10 @@ import { RecipeOrderEnum } from "../gql/graphql"
 interface Props {
   onSubmit: (ingredient: string[]) => void
   onSort: (orderBy: RecipeOrderEnum) => void
+  orderBy: string
 }
 
-export const Search = ({ onSubmit, onSort }: Props) => {
+export const Search = ({ onSubmit, onSort, orderBy }: Props) => {
   const [ingredients, setIngredients] = useState<string[]>([])
   const [ingredient, setIngredient] = useState("")
 
@@ -38,12 +39,15 @@ export const Search = ({ onSubmit, onSort }: Props) => {
           value={ingredient}
         />
 
-        <select id="sort_by" className="m-8 py-3 px-4 pr-9 block border-gray-200 rounded-md text-sm focus:border-blue-800 focus:ring-blue-800" onChange={(e) => onSort(e.target.value as RecipeOrderEnum)}>
-          <option value={RecipeOrderEnum.TitleAsc}>Order by</option>
+        <select
+          id="sort_by"
+          className="m-8 py-3 px-4 pr-9 block border-gray-200 rounded-md text-sm focus:border-blue-800 focus:ring-blue-800"
+          value={orderBy}
+          onChange={(e) => onSort(e.target.value as RecipeOrderEnum)}>
           <option value={RecipeOrderEnum.TitleAsc}>Title ↑</option>
           <option value={RecipeOrderEnum.TitleDesc}>Title ↓</option>
           <option value={RecipeOrderEnum.RatingsAsc}>Ratings ↑</option>
-          <option value={RecipeOrderEnum.RatingDesc}>Ratings ↓</option>
+          <option value={RecipeOrderEnum.RatingsDesc}>Ratings ↓</option>
         </select>
       </form>
       <div className="flex flex-row">
