@@ -1,9 +1,15 @@
-import { beforeEach, describe, expect, test } from "vitest"
+import { beforeEach, describe, expect, test, vi } from "vitest"
 import { RecipeItem } from "../../src/components/RecipeItem"
 import { render, screen } from "@testing-library/react"
 import React from "react"
 
 describe("RecipeItem", () => {
+  vi.mock('@smastrom/react-rating', () => {
+    const Rating = vi.fn()
+
+    return { Rating }
+  })
+
   beforeEach(async () => {
     await render(<RecipeItem recipe={recipe} />)
   })

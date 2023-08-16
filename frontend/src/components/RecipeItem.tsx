@@ -1,4 +1,5 @@
 import { Recipe } from "../gql/graphql"
+import { Rating } from '@smastrom/react-rating'
 
 interface Props {
   recipe: Recipe
@@ -10,6 +11,7 @@ export const RecipeItem = ({ recipe }: Props) => {
       <div className="col-start-2 col-end-4">
         <div>
           <h3 className="text-2xl">{recipe.title}</h3>
+          <Rating style={{ maxWidth: 120 }} value={recipe.ratings} readOnly/>
           <p>
             <span className="font-semibold">by:</span>{" "}
             <span>{recipe.author}</span>

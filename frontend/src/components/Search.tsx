@@ -39,7 +39,7 @@ export const Search = ({ onSubmit, onSort }: Props) => {
         />
 
         <select id="sort_by" className="m-8 py-3 px-4 pr-9 block border-gray-200 rounded-md text-sm focus:border-blue-800 focus:ring-blue-800" onChange={(e) => onSort(e.target.value as RecipeOrderEnum)}>
-          <option selected value={RecipeOrderEnum.TitleAsc}>Order by</option>
+          <option value={RecipeOrderEnum.TitleAsc}>Order by</option>
           <option value={RecipeOrderEnum.TitleAsc}>Title ↑</option>
           <option value={RecipeOrderEnum.TitleDesc}>Title ↓</option>
           <option value={RecipeOrderEnum.RatingsAsc}>Ratings ↑</option>
